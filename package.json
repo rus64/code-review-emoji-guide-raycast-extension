@@ -1,6 +1,6 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "code-review-emoji-guide",
+  "name": "code-review-emojis",
   "title": "Code Review Emoji Guide",
   "description": "A simple emoji legend to help convey intention and added meaning in code review comments.",
   "icon": "command-icon.png",
