@@ -1,31 +1,82 @@
-import { ActionPanel, Action, Icon, List } from "@raycast/api";
+import { ActionPanel, Action, List } from "@raycast/api";
 
-const ITEMS = Array.from(Array(3).keys()).map((key) => {
-  return {
-    id: key,
-    title: "Title " + key,
-    subtitle: "Subtitle",
-    accessory: "Accessory",
-  };
-});
+interface EMOJI {
+  icon: string;
+  title: string;
+}
+
+const EMOJIS: EMOJI[] = [
+  {
+    icon: "😃",
+    title: "I like this and I want the author to know it!",
+  },
+  {
+    icon: "🔧",
+    title: "I think this needs to be changed.",
+  },
+  {
+    icon: "❓",
+    title: "I have a question.",
+  },
+  {
+    icon: "💭",
+    title: "Let me think out loud here for a minute.",
+  },
+  {
+    icon: "🌱",
+    title: "Planting a seed for future.",
+  },
+  {
+    icon: "📝",
+    title: "This is an explanatory note.",
+  },
+  {
+    icon: "⛏️",
+    title: "This is a nitpick.",
+  },
+  {
+    icon: "♻️",
+    title: "Suggestion for refactoring.",
+  },
+  {
+    icon: "🏕",
+    title: "Here is an opportunity to leave the code cleaner than we found it.",
+  },
+  {
+    icon: "📌",
+    title: "This is a concern that is out of scope and should be staged appropriately for follow up.",
+  },
+];
 
 export default function Command() {
   return (
-    <List>
-      {ITEMS.map((item) => (
+    <List searchBarPlaceholder="Search Emojis">
+      <List.Section title="Emojis">
+        {EMOJIS.map((emoji) => (
+          <List.Item
+            key={emoji.icon}
+            icon={emoji.icon}
+            title={emoji.title}
+            actions={
+              <ActionPanel>
+                <Action.Paste content={emoji.icon} />
+              </ActionPanel>
+            }
+          />
+        ))}
+      </List.Section>
+      <List.Section title="More">
         <List.Item
-          key={item.id}
-          icon="list-icon.png"
-          title={item.title}
-          subtitle={item.subtitle}
-          accessories={[{ icon: Icon.Text, text: item.accessory }]}
+          key={"📘"}
+          icon={"📘"}
+          title={"Open Code Review Emoji Guide"}
           actions={
             <ActionPanel>
-              <Action.CopyToClipboard content={item.title} />
+              <Action.OpenInBrowser url="https://github.com/erikthedeveloper/code-review-emoji-guide" />
             </ActionPanel>
           }
         />
-      ))}
+      </List.Section>
     </List>
   );
 }
