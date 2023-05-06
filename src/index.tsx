@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { ActionPanel, Action, List } from "@raycast/api";
 
 interface EMOJI {
